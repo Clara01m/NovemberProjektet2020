@@ -7,7 +7,8 @@ namespace NovProjekt
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Decided on making a raylib platform game :)
+            
         }
     }
 }
