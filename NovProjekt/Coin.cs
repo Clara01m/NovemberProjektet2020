@@ -3,9 +3,8 @@ using Raylib_cs;
 
 namespace NovProjekt
 {
-    public class Enemy
+    public class Coin
     {
         
     }
 }
-
