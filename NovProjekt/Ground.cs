@@ -5,6 +5,10 @@ namespace NovProjekt
 {
     public class Ground
     {
+        int x;
+        int y; 
+
         
     }
+
 }

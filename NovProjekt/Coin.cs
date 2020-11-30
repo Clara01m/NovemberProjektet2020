@@ -5,6 +5,9 @@ namespace NovProjekt
 {
     public class Coin
     {
+        int x;
+        int y;
+        int value;
         
     }
 }
