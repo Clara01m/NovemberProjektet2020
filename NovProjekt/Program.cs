@@ -12,28 +12,31 @@ namespace NovProjekt
             //Ska nu lära mig hur man gör en startmeny och sedan hur man använder den i spelet
        
          GameScreens screen = GameScreens.Start;
-                if (screen == GameScreens.Start)
+            if (screen == GameScreens.Start)
             {
-            if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
-            {
-                screen = GameScreens.Game;
-            }
-            }
+                if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
+                {
+                    screen = GameScreens.Game;
+                }
+                }
             else if (screen == GameScreens.Game)
             {
-            
+                 while(!Raylib.WindowShouldClose())
+                {   //LOGIC
+                    if(Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
+                    {
+                        
+                    }
+
+                    
+                    //DRAWING
+                    Raylib.BeginDrawing(); 
+                    //Raylib.ClearBackground(Blue);
+               } 
             }
 
-              while(!Raylib.WindowShouldClose())
-            {   //LOGIC
-                if(Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
-                {
-                    
-                }
-            } 
-            //DRAWING
-               Raylib.BeginDrawing(); 
-               //Raylib.ClearBackground(Blue);
+               
+           
         }         
      }          
 }

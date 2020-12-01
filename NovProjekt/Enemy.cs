@@ -9,7 +9,7 @@ namespace NovProjekt
         int y; 
         int attack; 
         int hp;
-        
+        public int enemySpeed;
         
     }
 }
