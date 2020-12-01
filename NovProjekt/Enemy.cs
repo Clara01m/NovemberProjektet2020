@@ -8,7 +8,7 @@ namespace NovProjekt
         int x; 
         int y; 
         int attack; 
-        int hp;
+        int enemyHp;
         public int enemySpeed;
         
     }
