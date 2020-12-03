@@ -7,7 +7,7 @@ namespace NovProjekt
     {
         int x;
         int y; 
-        public int gravity; 
+        
         
 
 
