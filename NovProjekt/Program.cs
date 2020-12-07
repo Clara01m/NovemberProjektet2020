@@ -11,8 +11,9 @@ namespace NovProjekt
             //Decided on making a raylib platform game :)
             //Ska nu lära mig hur man gör en startmeny och sedan hur man använder den i spelet
             
-            Color ste = new Color(255, 128, 0, 255);
+            Color ice = new Color(102, 204, 255, 255);
             
+
             GameScreens screen = GameScreens.Start;
             Raylib.InitWindow(900, 600, "November Falling"); 
             
@@ -24,27 +25,34 @@ namespace NovProjekt
                 if (screen == GameScreens.Start)
                 { 
                     //Drawing 
-                    Raylib.ClearBackground(ste);
-                    
-                    Raylib.DrawText("November Falling", 20, 20, 20, Color.BLUE);
-
+                    Raylib.ClearBackground(ice);
+                    // Text on start screen
+                    Raylib.DrawText("November Falling", 235, 50, 50, Color.BLACK);
+                    Raylib.DrawText("What is your name", 300, 250, 35, Color.BLACK);
+                    Console.ReadLine();
+                    // Game starts
                     if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
                     {
                         screen = GameScreens.Game;
                     }
                 }
                 else if (screen == GameScreens.Game)
-                {
+                {   
                     //LOGIC
                         if(Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
+                        {
+                            xPos +1; 
+                        }
+                         if(Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
+                        {
+                            
+                        }
+                         if(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
                         {
                             
                         }
 
-
-                        //DRAWING
-                        // Raylib.BeginDrawing(); 
-                        //Raylib.ClearBackground(Blue);
+                    
                 } 
 
                 Raylib.EndDrawing();
