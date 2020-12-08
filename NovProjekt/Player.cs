@@ -6,8 +6,8 @@ namespace NovProjekt
     {
         public string playerName; 
         public int hp;
-        public int xPos;
-        public int yPos;
+        public int xPos = 0;
+        public int yPos = 50;
         int speed; 
         
     }
