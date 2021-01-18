@@ -5,8 +5,8 @@ namespace NovProjekt
 {
     public class Enemy
     {
-        int x; 
-        int y; 
+        public int x; 
+        public int y; 
         int attack; 
         int enemyHp;
         public int enemySpeed;

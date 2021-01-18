@@ -9,19 +9,19 @@ namespace NovProjekt
         static void Main(string[] args)
         {
             //Decided on making a raylib platform game :)
-            //Ska nu lära mig hur man gör en startmeny och sedan hur man använder den i spelet
             
             Color ice = new Color(102, 204, 255, 255);
             Color ground = new Color(179, 230, 76, 255);
-            
+
 
             GameScreens screen = GameScreens.Start;
             Raylib.InitWindow(900, 600, "November Falling"); 
             
              while(!Raylib.WindowShouldClose())
             {
+                Player start = new Player();
 
-
+                //Intro screen
                 Raylib.BeginDrawing(); 
                 if (screen == GameScreens.Start)
                 { 
@@ -32,6 +32,7 @@ namespace NovProjekt
                     // Text on start screen
                     Raylib.DrawText("November Falling", 235, 50, 50, Color.BLACK);
                     Raylib.DrawText("What is your name", 300, 250, 35, Color.BLACK);
+                    console.readline(); 
                     
                     // Game starts
                     if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
@@ -39,28 +40,44 @@ namespace NovProjekt
                         screen = GameScreens.Game;
                     }
                 }
+                //Actual Game
                 else if (screen == GameScreens.Game)
                 {   
+                    Player hello = new Player(); 
+                    Ground first = new Ground();
+                    
+
                     //Drawing
+                    Raylib.ClearBackground(ice);
                     Raylib.DrawRectangle(0,0,900, 50, ground);
+
+
                     //LOGIC
+                    if (Raylib.CheckCollisionRecs(first, second))
+                    {
+                        Raylib.DrawText("works?", 100, 100, 64, Color.BLACK);
+                    }
+
+
+                    Raylib.DrawTexture(girl, (int) hello.xPos, 10, Color.WHITE);
+
                         if(Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
                         {
-                            if(!xPos > 600)
+                            if(!(hello.xPos > 600))
                             {
-                            xPos ++; 
+                            hello.xPos ++; 
                             }
                         }
                          if(Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
                         {
-                            if(!xPos < 0)
+                            if(!(hello.xPos < 0))
                             {
-                            xPos --; 
+                            hello.xPos --; 
                             }
                         }
                          if(Raylib.IsKeyDown(KeyboardKey.KEY_UP))
                         {
-                            yPos +3; 
+                            hello.yPos +=3; 
                         }
 
                     
