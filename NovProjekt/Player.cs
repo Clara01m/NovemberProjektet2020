@@ -7,7 +7,7 @@ namespace NovProjekt
     {
 
         public Rectangle first = new Rectangle(10, 10, 50, 50);
-        first = Texture2D girl = Raylib.LoadTexture("borrowedGirl.png");
+        Texture2D girl = Raylib.LoadTexture("borrowedGirl.png");
 
         public string playerName; 
         public int hp = 5;

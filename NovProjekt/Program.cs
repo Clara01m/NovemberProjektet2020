@@ -5,11 +5,10 @@ namespace NovProjekt
 {
     class Program
     {
-         enum GameScreens { Start,Game}
+         enum GameScreens { Start,Game,GameOver}
         static void Main(string[] args)
         {
-            //Decided on making a raylib platform game :)
-            
+           //Here are colors I want to use which aren't pre-existing in raylib
             Color ice = new Color(102, 204, 255, 255);
             Color ground = new Color(179, 230, 76, 255);
 
@@ -26,17 +25,17 @@ namespace NovProjekt
                 if (screen == GameScreens.Start)
                 { 
                     //Drawing 
-                    Raylib.ClearBackground(ice);
-                    //Texture2D bg = Raylib.LoadTexture ("Bakgrundintro.png"); 
-                   
+                    Texture2D bg = Raylib.LoadTexture ("Bakgrundintro.png"); 
+                    Raylib.DrawTexture(bg, 0,0 , Color.WHITE);
+
                     // Text on start screen
                     Raylib.DrawText("November Falling", 235, 50, 50, Color.BLACK);
                     Raylib.DrawText("What is your name", 300, 250, 35, Color.BLACK);
-                    console.readline(); 
                     
                     // Game starts
-                    if (Raylib.IsKeyPressed(KeyboardKey.KEY_ENTER))
+                    if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER))
                     {
+                        Raylib.EndDrawing(); 
                         screen = GameScreens.Game;
                     }
                 }
@@ -45,21 +44,21 @@ namespace NovProjekt
                 {   
                     Player hello = new Player(); 
                     Ground first = new Ground();
-                    
+                    Raylib.BeginDrawing();
 
-                    //Drawing
+                    //DRAWING
                     Raylib.ClearBackground(ice);
-                    Raylib.DrawRectangle(0,0,900, 50, ground);
+                    Raylib.DrawRectangle(0,600,900, 50, ground);
 
 
                     //LOGIC
-                    if (Raylib.CheckCollisionRecs(first, second))
+                    if (Raylib.CheckCollisionRecs(first,  ))
                     {
                         Raylib.DrawText("works?", 100, 100, 64, Color.BLACK);
                     }
 
-
-                    Raylib.DrawTexture(girl, (int) hello.xPos, 10, Color.WHITE);
+                        //Movement
+                    Raylib.DrawRectangle (hello.xPos, hello.yPos, 20, 40, Color.WHITE);
 
                         if(Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
                         {
@@ -82,6 +81,12 @@ namespace NovProjekt
 
                     
                 } 
+                else (screen == GameScreens.GameOver)
+                {
+                    Raylib.BeginDrawing();
+                    Raylib.ClearBackground(ice);
+                    Raylib.DrawText("Game Over", 235, 50, 50, Color.BLACK);
+                }
 
                 Raylib.EndDrawing();
             }
