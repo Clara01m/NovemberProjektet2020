@@ -8,6 +8,8 @@ namespace NovProjekt
         int x;
         int y;
         int value;
+
+        
         
         
         
