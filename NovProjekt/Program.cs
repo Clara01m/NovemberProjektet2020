@@ -17,6 +17,7 @@ namespace NovProjekt
             Raylib.InitWindow(900, 600, "November Falling");
 
             Player start = new Player();
+            Enemy beanie = new Enemy(); 
             
             while (!Raylib.WindowShouldClose())
             {
@@ -52,18 +53,16 @@ namespace NovProjekt
                     Raylib.ClearBackground(ice);
                     Raylib.DrawRectangle(0, 550, 900, 50, ground);
                     Raylib.DrawTexture(start.girl, (int) start.first.x, (int) start.first.y, Color.WHITE);
+                    Raylib.DrawTexture(beanie.bean, (int) beanie.beanMan.x, (int) beanie.beanMan.y, Color.WHITE);
 
                     //LOGIC
-                    if (Raylib.CheckCollisionRecs(start.first, platform.second))
-                    {
-                        Raylib.DrawText("works?", 100, 100, 64, Color.BLACK);
-                    }
+                    
 
                     //Movement
 
                      if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
                      {
-                         if (!(start.first.x > 600))
+                         if (!(start.first.x > 800))
                          {
                              start.first.x++;
                          }
@@ -75,11 +74,15 @@ namespace NovProjekt
                              start.first.x--;
                          }
                      }
-                     if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
-                     {
-                         start.first.y += 3;
-                    //     // implimentera tic funktion
-                     }
+                     if (Raylib.CheckCollisionRecs(start.first, platform.second))
+                    {                              
+                        if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
+                        {
+                            start.first.y -=3;
+
+
+                        }
+                      }
 
 
                 }
