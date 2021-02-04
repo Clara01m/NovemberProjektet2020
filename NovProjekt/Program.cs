@@ -18,6 +18,7 @@ namespace NovProjekt
 
             Player start = new Player();
             Enemy beanie = new Enemy(); 
+            Coin para = new Coin(); 
             
             while (!Raylib.WindowShouldClose())
             {
@@ -54,9 +55,26 @@ namespace NovProjekt
                     Raylib.DrawRectangle(0, 550, 900, 50, ground);
                     Raylib.DrawTexture(start.girl, (int) start.first.x, (int) start.first.y, Color.WHITE);
                     Raylib.DrawTexture(beanie.bean, (int) beanie.beanMan.x, (int) beanie.beanMan.y, Color.WHITE);
+                    Raylib.DrawTexture(para.money, (int) para.gold.x, (int) para.gold.y, Color.WHITE);
+                     Raylib.DrawText("money= " + para.value, 50, 50, 50, Color.BLACK);
+
+
 
                     //LOGIC
-                    
+                    if (Raylib.CheckCollisionRecs(start.first, beanie.beanMan))
+                    { 
+                        start.hp -=1; 
+                    }
+                    if (start.hp < 0)
+                    {
+                         screen = GameScreens.GameOver; 
+                    }
+
+                     if (Raylib.CheckCollisionRecs(start.first,para.gold))
+                    { 
+                        para.value +=1;                   
+                    }
+            
 
                     //Movement
 
@@ -74,7 +92,7 @@ namespace NovProjekt
                              start.first.x--;
                          }
                      }
-                     if (Raylib.CheckCollisionRecs(start.first, platform.second))
+                    if (Raylib.CheckCollisionRecs(start.first, platform.second))
                     {                              
                         if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
                         {
@@ -82,6 +100,10 @@ namespace NovProjekt
 
 
                         }
+                    }
+                      else
+                      {
+                           start.first.y +=1; 
                       }
 
 
@@ -89,8 +111,9 @@ namespace NovProjekt
                 else if (screen == GameScreens.GameOver)
                 {
                     Raylib.BeginDrawing();
-                    Raylib.ClearBackground(ice);
-                    Raylib.DrawText("Game Over", 235, 50, 50, Color.BLACK);
+                    Texture2D bg = Raylib.LoadTexture("Bakgrundintro.png");
+                    Raylib.DrawTexture(bg, 0, 0, Color.WHITE);
+                    Raylib.DrawText("Game Over", 235, 100, 90, Color.BLACK);
                 }
 
                 Raylib.EndDrawing();
